@@ -50,41 +50,67 @@ header {
     display: block;
 }
 
-/* Slide Section */
+/* Slide wrapper */
 .slide {
-    position: relative;
-    overflow: hidden;
-    background-image: url('images/slide.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    text-align: center;
-}
-.slide-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 20px;
+  position: relative;
+  width: 100%;
+  height: 500px; /* Adjust as needed */
+  overflow: hidden;
 }
 
-/* Carousel Styles */
+/* Carousel visible area */
 .carousel {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
 }
-.carousel img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
+
+/* Carousel track containing all images */
+.carousel-track {
+  display: flex;
+  width: 300%; /* 100% * number of slides */
+  height: 100%;
+  animation: slide 9s infinite;
 }
+
+/* Individual carousel images */
+.carousel-track img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Animation keyframes to slide images */
+@keyframes slide {
+  0%, 20% {
+    transform: translateX(0%);
+  }
+  33%, 53% {
+    transform: translateX(-100%);
+  }
+  66%, 86% {
+    transform: translateX(-200%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+/* Overlayed text content on carousel */
+.slide-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px 40px;
+  border-radius: 10px;
+  z-index: 2;
+}
+
 
 /* Services Section */
 .services {
